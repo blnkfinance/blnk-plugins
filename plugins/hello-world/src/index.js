@@ -3,7 +3,10 @@ async function init() {
 }
 
 async function run(blnk) {
-  console.log("Hello World Plugin executed with event data:", blnk);
+  console.log(
+    "Hello World Plugin executed with event data:",
+    blnk.connectedUrl
+  );
 }
 
 async function terminate() {
