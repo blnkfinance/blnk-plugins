@@ -1,26 +1,7 @@
-const axios = require("axios");
-const Table = require("cli-table");
-const chalk = require("chalk");
-const { execSync } = require("child_process");
-
 const GBP_RATE = 1.38; // Example conversion rate to GBP
 
 async function init() {
   console.log("Convert Plugin initialized");
-  installDependencies();
-}
-
-function installDependencies() {
-  console.log("Installing dependencies...");
-
-  try {
-    execSync("npm install axios cli-table chalk", {
-      stdio: "inherit",
-    });
-    console.log("Dependencies installed successfully.");
-  } catch (error) {
-    console.error("Error installing dependencies:", error.message);
-  }
 }
 
 async function run(blnk) {
