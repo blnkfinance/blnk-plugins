@@ -1,9 +1,15 @@
-const GBP_RATE = 1.38; // Example conversion rate to GBP
+const axios = require("axios");
+const Table = require("cli-table");
+const chalk = require("chalk");
 
+const GBP_RATE = process.env.GBP_RATE || 1.38; // Example conversion rate to GBP, can be set via environment variables
+
+// Initialize the plugin
 async function init() {
   console.log("Convert Plugin initialized");
 }
 
+// Run the plugin logic
 async function run(blnk) {
   console.log("Convert Plugin executed with event data:", blnk.connectedUrl);
 
@@ -11,12 +17,14 @@ async function run(blnk) {
   const headers = blnk.headers || {};
 
   try {
+    // Fetch balances from the Blnk instance
     const response = await axios.post(
       `${instanceUrl}/search/balances`,
       { q: "*" },
       { headers }
     );
 
+    // Process and display the balances
     if (response.data && response.data.hits && response.data.hits.length > 0) {
       const rows = response.data.hits.map((balance) => {
         const balanceAmount = balance.document.balance || 0;
@@ -30,6 +38,7 @@ async function run(blnk) {
         ];
       });
 
+      // Create a table to display the balances
       const table = new Table({
         head: [
           "Balance ID",
@@ -46,16 +55,19 @@ async function run(blnk) {
       console.log(chalk.yellow("No balances found."));
     }
   } catch (error) {
-    console.error(chalk.red(`Error: ${error.message}`));
+    console.error(chalk.red(`Error fetching balances: ${error.message}`));
   }
 }
 
+// Terminate the plugin
 async function terminate() {
   console.log("Convert Plugin terminated");
 }
 
+// Subscribe to events
 async function subscribe(event) {
-  console.log("Something happened in the ledger: ", event);
+  console.log("Event received in ledger: ", event);
 }
 
+// Export the plugin functions
 module.exports = { init, run, terminate, subscribe };
