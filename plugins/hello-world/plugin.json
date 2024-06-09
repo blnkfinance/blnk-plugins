@@ -1,0 +1,9 @@
+{
+  "name": "example-plugin",
+  "version": "1.0.0",
+  "description": "An example plugin for Blnk",
+  "author": "Developer Name",
+  "main": "src/index.js",
+  "permissions": ["read:transactions", "write:accounts"],
+  "ui": "src/ui.html"
+}
