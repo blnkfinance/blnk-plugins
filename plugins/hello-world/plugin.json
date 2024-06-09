@@ -1,8 +1,8 @@
 {
-  "name": "example-plugin",
+  "name": "hello-world",
   "version": "1.0.0",
   "description": "An example plugin for Blnk",
-  "author": "Developer Name",
+  "author": "Jerry",
   "main": "src/index.js",
   "permissions": ["read:transactions", "write:accounts"],
   "ui": "src/ui.html"
