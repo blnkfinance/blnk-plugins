@@ -17,4 +17,4 @@ async function subscribe(event) {
   console.log("Something happened in the ledger: ", event);
 }
 
-module.exports = { init, run, terminate };
+module.exports = { init, run, terminate,subscribe };
