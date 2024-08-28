@@ -1,4 +1,5 @@
 # Blnk Plugin Repository
+![Logo](https://res.cloudinary.com/dmxizylxw/image/upload/v1724847576/blnk_github_logo_eyy2lf.png)
 
 This repository hosts open source plugins for Blnk Finance. 
 
